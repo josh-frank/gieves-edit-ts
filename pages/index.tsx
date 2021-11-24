@@ -7,6 +7,8 @@ import { useAppDispatch as useDispatch } from '../redux/hooks'
 // import MouseTester from '../components/mouseTester';
 import { setArtboardDimensions, setOffset } from '../redux/artboardSlice';
 import Artboard from '../components/artboard';
+import Pen from '../components/pen';
+import Shapes from '../components/shapes';
 
 const Home: NextPage = () => {
 
@@ -55,11 +57,13 @@ const Home: NextPage = () => {
       window.removeEventListener( "keyup", handleKeyUp );
       window.removeEventListener( "resize", handleResize );
     };
-  }, [ dispatch, handleMouseDown, handleMouseMove, handleMouseUp, handleResize ] );
+  }, [ dispatch, handleMouseDown, handleMouseMove, handleMouseUp, handleKeyDown, handleKeyUp, handleResize ] );
 
   return <>
     <SvgWrapper>
       <Artboard />
+      <Pen />
+      <Shapes />
     </SvgWrapper>
   </>;
 
