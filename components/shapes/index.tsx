@@ -25,12 +25,10 @@ const Shapes: FunctionComponent = () => {
     const previousMouse = useRef<Coordinates>();
     const previousMouseDown = useRef<MouseDown | null>();
 
-    useEffect( () => { 
-        return () => {
-            previousMouse.current = mouse;
-            previousMouseDown.current = mouseDown;
-        }
-    }, [ mouse, mouseDown ] );
+    useEffect( () => () => {
+        previousMouse.current = mouse;
+        previousMouseDown.current = mouseDown;
+    } );
 
     useEffect( () => {
         if ( mouseDown && previousMouse.current && previousMouseDown.current?.dataset.pointIndex && !vectorEquality( mouse, previousMouse.current ) ) {
